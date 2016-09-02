@@ -24,7 +24,7 @@ void printNode(Node *s){
 	s->data, s->L_link, s->R_link);
 }
 
-//노드가 비어있으면 비었다고 알리는 메소드 
+//리스트가 비어있으면 비었다고 알리는 메소드 
 void isListEmpty(Node *s){
 	if(s->R_link == NULL) printf("list is empty!!\n");
 }
@@ -47,7 +47,10 @@ void addNode(Node *s, Data e){
  //노드 삭제  데이터가 일치하는 노드 삭제 
 void deleteNode(Node *s, Data e){
 	Node *p = s;
-	isListEmpty(s);
+	if(p->L_link == NULL){ // 맨처음 노드일때 
+		isListEmpty(s);
+		return;
+	} 
 	while(p != NULL){ //끝이 없을때까지 탐색 
 		if(p->data == e){
 			if(p->R_link == NULL){ //마지막 노드의 경우 
@@ -70,7 +73,12 @@ void deleteNode(Node *s, Data e){
 void searchNode(Node *s, Data e){
 	Node *p = s;
 	int cnt = 0, find=0; // 몇번째 노드인지 세자 
-	isListEmpty(s);
+	
+	if(p->L_link == NULL){ // 맨처음 노드일때 
+		isListEmpty(s);
+		return;
+	} 
+	
 	while(p != NULL){ //끝이 없을때까지 탐색 
 		if(p->data == e){
 			find = 1;
@@ -87,7 +95,10 @@ void searchNode(Node *s, Data e){
 void countNode(Node *s){
 	Node *p = s;
 	int cnt = 0; // 몇번째 노드인지 카운트  
-	isListEmpty(s);
+	if(p->L_link == NULL){ // 맨처음 노드일때 
+		isListEmpty(s);
+		return;
+	} 
 	
 	while(p->R_link != NULL){ //끝이 없을때까지 탐색 
 		cnt++; // 숫자 증가 
@@ -100,6 +111,10 @@ void countNode(Node *s){
 //모든 노드를 순서대로 출력하는 메소드   
 void showNode(Node *s){
 	int cnt=0;
+	if(s->L_link == NULL){ // 맨처음 노드일때 
+		isListEmpty(s);
+		return;
+	} 
 	while(s != NULL){
 		if(cnt != 0) printNode(s);
 		s = s->R_link;
@@ -109,6 +124,11 @@ void showNode(Node *s){
 
 //모든 노드들을 정반대로 출력하는 메소드  
 void reverseNode(Node *s){
+	if(s->L_link == NULL){ // 맨처음 노드일때 
+		isListEmpty(s);
+		return;
+	} 
+	
 	s = finalNode(s);
 	int cnt=0;
 	while(s->L_link != NULL){
