@@ -59,7 +59,7 @@ void search(Data data){
 void show(){
 	int i;
 	for(i=front;i<=rear;i++){
-		printf("%c  ", arrayQueue[i]);
+		printf("%c  ", arrayQueue[i%MAX]);
 	}
 	printf("\n");
 	printPoint();
