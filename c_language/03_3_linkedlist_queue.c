@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//나만의 약속 선언 
+//나만의 약속 선언  
 #define Data char
 
 //구조체 
